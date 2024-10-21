@@ -15,8 +15,17 @@ function AddButton() {
     )
 }
 
+const getInput = () => {
+    const input = prompt("Enter Workspace name:")
+    if (input) {
+        return input;
+    } else {
+        return "NewElement";
+    }
+}
+
 const addNewElement = async () => {
-    const input = prompt("Enter Workspace name:");
+    const input: string = getInput()
     addWorkspace(input)
 }
 

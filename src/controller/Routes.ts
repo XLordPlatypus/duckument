@@ -1,6 +1,6 @@
 import express from 'express';
-import Page from "../model/models/Page.ts";
-import Workspace from "../model/models/Workspace.ts";
+import Page from "../model/models/Page.js";
+import Workspace from "../model/models/Workspace.js";
 
 const router = express.Router()
 

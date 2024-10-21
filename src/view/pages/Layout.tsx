@@ -1,7 +1,6 @@
-import AddButton from "../buttons/AddButton.tsx";
-import DuckButton from "../buttons/DuckButton.tsx";
+import AddButton from "../buttons/AddButton";
+import DuckButton from "../buttons/DuckButton";
 import {Outlet} from "react-router-dom";
-import {getWorkspaces} from "../api/Api";
 
 function Layout() {
     return (

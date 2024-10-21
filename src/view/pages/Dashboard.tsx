@@ -1,4 +1,4 @@
-import {getWorkspaces} from "../api/Api.js"
+import {getWorkspaces} from "../api/Api"
 
 function Dashboard() {
     getWorkspaces();

@@ -5,14 +5,13 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "outDir": "build",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": false,
+    "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -21,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/model", "src/controller"],
-  "exclude": ["src/view", "node_modules"]
+  "include": ["src/view"],
+  "exclude": ["src/model", "src/controller", "node_modules"],
 }

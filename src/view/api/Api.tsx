@@ -2,7 +2,7 @@ import axios from "axios";
 
 /* Workspace Api */
 
-export const getWorkspace = (workspaceId) => {
+export const getWorkspace = (workspaceId: string) => {
     axios.get(`http://localhost:3000/api/workspace/${workspaceId}`)
     .then(res => {
         console.log(res);
@@ -24,8 +24,8 @@ export const getWorkspaces = () => {
     })
 }
 
-export const addWorkspace = () => {
-    axios.post('http://localhost:3000/api/add-workspace')
+export const addWorkspace = (name: string) => {
+    axios.post('http://localhost:3000/api/add-workspace', name)
         .then(res => {
             console.log(res)
             return res.data;
@@ -35,7 +35,7 @@ export const addWorkspace = () => {
         })
 }
 
-export const updateWorkspace = (workspaceId) => {
+export const updateWorkspace = (workspaceId: string) => {
     axios.put(`http://localhost:3000/api/update-workspace/${workspaceId}`)
     .then(res => {
         console.log(res)
@@ -46,7 +46,7 @@ export const updateWorkspace = (workspaceId) => {
     })
 }
 
-export const deleteWorkspace = (workspaceId) => {
+export const deleteWorkspace = (workspaceId: string) => {
     axios.delete(`http://localhost:3000/api/workspace/${workspaceId}`)
         .then(res => {
             console.log(res)
@@ -59,7 +59,7 @@ export const deleteWorkspace = (workspaceId) => {
 
 /* Page Api */
 
-export const getPage = (pageId) => {
+export const getPage = (pageId: string) => {
     axios.get(`http://localhost:3000/page/${pageId}`)
         .then(res => {
             console.log(res);
@@ -81,7 +81,7 @@ export const getPages = () => {
         })
 }
 
-export const addPage = (workspaceId) => {
+export const addPage = (workspaceId: string) => {
     axios.post(`http://localhost:3000/api/add-page/${workspaceId}`)
         .then(res => {
             console.log(res)
@@ -92,7 +92,7 @@ export const addPage = (workspaceId) => {
         })
 }
 
-export const updatePage = (pageId) => {
+export const updatePage = (pageId: string) => {
     axios.put(`http://localhost:3000/api/update-page/${pageId}`)
         .then(res => {
             console.log(res)
@@ -103,7 +103,7 @@ export const updatePage = (pageId) => {
         })
 }
 
-export const deletePage = (pageId) => {
+export const deletePage = (pageId: string) => {
     axios.delete(`http://localhost:3000/api/delete-page/${pageId}`)
         .then(res => {
             console.log(res)

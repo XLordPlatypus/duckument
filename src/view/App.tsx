@@ -1,8 +1,8 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Dashboard from "./pages/Dashboard.tsx";
-import Page from "./pages/Page.tsx";
-import Workspace from "./pages/Workspace.tsx";
-import Layout from "./pages/Layout.tsx";
+import Dashboard from "./pages/Dashboard";
+import Page from "./pages/Page";
+import Workspace from "./pages/Workspace";
+import Layout from "./pages/Layout";
 
 function App() {
     return (
