@@ -1,6 +1,6 @@
 import express from 'express';
-import Page from "../model/models/Page.js";
-import Workspace from "../model/models/Workspace.js";
+import Page from "../model/models/Page.ts";
+import Workspace from "../model/models/Workspace.ts";
 
 const router = express.Router()
 
@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.get('/workspace/:workspaceId', async (req, res) => {
     try {
-        res.json(Workspace.findById(req.params.workspaceId))
+        res.json(await Workspace.findById(req.params.workspaceId))
     } catch (e) {
         console.log(e)
     }
@@ -36,8 +36,7 @@ router.put('/api/update-workspace/:workspaceId', async (req, res) => {
     try {
         await Workspace.updateOne({_id: req.params.workspaceId}, {
             $set: {
-                name: req.body.name,
-                pageIds: req.body.pageIds
+                name: req.body.name, pageIds: req.body.pageIds
             }
         })
         res.json({message: 'Workspace updated successfully'})
@@ -77,7 +76,7 @@ router.post('/api/add-page/:workspaceId', async (req, res) => {
     try {
         const newPage = await Page.create({name: req.body.name})
         newPage.save()
-        await Workspace.updateOne({ _id: req.params.workspaceId }, { $push: {pageIds: newPage._id }})
+        await Workspace.updateOne({_id: req.params.workspaceId}, {$push: {pageIds: newPage._id}})
         res.json(newPage)
     } catch (e) {
         console.log(e)

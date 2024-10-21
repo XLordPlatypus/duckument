@@ -3,7 +3,7 @@ import axios from "axios";
 /* Workspace Api */
 
 export const getWorkspace = (workspaceId) => {
-    axios.get(`/api/workspace/${workspaceId}`)
+    axios.get(`http://localhost:3000/api/workspace/${workspaceId}`)
     .then(res => {
         console.log(res);
         return res.data;
@@ -14,7 +14,7 @@ export const getWorkspace = (workspaceId) => {
 }
 
 export const getWorkspaces = () => {
-    axios.get(`/api/workspaces`)
+    axios.get(`http://localhost:3000/api/workspaces`)
     .then(res => {
         console.log(res);
         return res.data;
@@ -25,7 +25,7 @@ export const getWorkspaces = () => {
 }
 
 export const addWorkspace = () => {
-    axios.post('/api/add-workspace')
+    axios.post('http://localhost:3000/api/add-workspace')
         .then(res => {
             console.log(res)
             return res.data;
@@ -36,7 +36,7 @@ export const addWorkspace = () => {
 }
 
 export const updateWorkspace = (workspaceId) => {
-    axios.put(`/api/update-workspace/${workspaceId}`)
+    axios.put(`http://localhost:3000/api/update-workspace/${workspaceId}`)
     .then(res => {
         console.log(res)
         return res.data;
@@ -47,7 +47,7 @@ export const updateWorkspace = (workspaceId) => {
 }
 
 export const deleteWorkspace = (workspaceId) => {
-    axios.delete(`/api/workspace/${workspaceId}`)
+    axios.delete(`http://localhost:3000/api/workspace/${workspaceId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -60,7 +60,7 @@ export const deleteWorkspace = (workspaceId) => {
 /* Page Api */
 
 export const getPage = (pageId) => {
-    axios.get(`/page/${pageId}`)
+    axios.get(`http://localhost:3000/page/${pageId}`)
         .then(res => {
             console.log(res);
             return res.data;
@@ -71,7 +71,7 @@ export const getPage = (pageId) => {
 }
 
 export const getPages = () => {
-    axios.get('/pages')
+    axios.get('http://localhost:3000/pages')
         .then(res => {
             console.log(res);
             return res.data;
@@ -82,7 +82,7 @@ export const getPages = () => {
 }
 
 export const addPage = (workspaceId) => {
-    axios.post(`/api/add-page/${workspaceId}`)
+    axios.post(`http://localhost:3000/api/add-page/${workspaceId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -93,7 +93,7 @@ export const addPage = (workspaceId) => {
 }
 
 export const updatePage = (pageId) => {
-    axios.put(`/api/update-page/${pageId}`)
+    axios.put(`http://localhost:3000/api/update-page/${pageId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -104,7 +104,7 @@ export const updatePage = (pageId) => {
 }
 
 export const deletePage = (pageId) => {
-    axios.delete(`/api/delete-page/${pageId}`)
+    axios.delete(`http://localhost:3000/api/delete-page/${pageId}`)
         .then(res => {
             console.log(res)
             return res.data;

@@ -1,3 +1,6 @@
+import {addWorkspace} from "../api/Api";
+
+
 function AddButton() {
     return (
         <>
@@ -12,6 +15,9 @@ function AddButton() {
     )
 }
 
-const addNewElement = () => {}
+const addNewElement = async () => {
+    const input = prompt("Enter Workspace name:");
+    addWorkspace(input)
+}
 
 export default AddButton;

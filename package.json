@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build": "npx tsc",
     "start": "node Main.js",
     "client": "vite",
     "server": "node src/model/Main.js",
@@ -13,11 +14,13 @@
   "dependencies": {
     "@types/express": "^5.0.0",
     "axios": "^1.7.7",
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "mongoose": "^8.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "reactjs-popup": "^2.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

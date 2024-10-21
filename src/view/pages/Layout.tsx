@@ -1,7 +1,7 @@
 import AddButton from "../buttons/AddButton.tsx";
 import DuckButton from "../buttons/DuckButton.tsx";
 import {Outlet} from "react-router-dom";
-import {addPage, addWorkspace} from "../api/Api";
+import {getWorkspaces} from "../api/Api";
 
 function Layout() {
     return (
@@ -26,14 +26,6 @@ function Layout() {
             </footer>
         </>
     )
-}
-
-const addNewElement = () => {
-    if (window.location.href.match('.*workspace.*')) {
-
-    } else {
-
-    }
 }
 
 export default Layout;
