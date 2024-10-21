@@ -2,30 +2,28 @@ import axios from "axios";
 
 /* Workspace Api */
 
-export const getWorkspace = (workspaceId: string) => {
-    axios.get(`http://localhost:3000/api/workspace/${workspaceId}`)
-    .then(res => {
+export const getWorkspace = async (workspaceId: string) => {
+    try {
+        const res = await axios.get(`http://localhost:3000/api/workspace/${workspaceId}`)
         console.log(res);
         return res.data;
-    })
-    .catch(e => {
+    } catch (e) {
         console.log(e);
-    })
+    }
 }
 
-export const getWorkspaces = () => {
-    axios.get(`http://localhost:3000/api/workspaces`)
-    .then(res => {
+export const getWorkspaces = async () => {
+    try {
+        const res = await axios.get(`http://localhost:3000/api/workspaces`)
         console.log(res);
         return res.data;
-    })
-    .catch(e => {
+    } catch (e) {
         console.log(e);
-    })
+    }
 }
 
 export const addWorkspace = (name: string) => {
-    axios.post('http://localhost:3000/api/add-workspace', name)
+    axios.post('http://localhost:3000/api/add-workspace', {name: name})
         .then(res => {
             console.log(res)
             return res.data;
@@ -37,17 +35,17 @@ export const addWorkspace = (name: string) => {
 
 export const updateWorkspace = (workspaceId: string) => {
     axios.put(`http://localhost:3000/api/update-workspace/${workspaceId}`)
-    .then(res => {
-        console.log(res)
-        return res.data;
-    })
-    .catch(e => {
-        console.log(e);
-    })
+        .then(res => {
+            console.log(res)
+            return res.data;
+        })
+        .catch(e => {
+            console.log(e);
+        })
 }
 
 export const deleteWorkspace = (workspaceId: string) => {
-    axios.delete(`http://localhost:3000/api/workspace/${workspaceId}`)
+    axios.delete(`http://localhost:3000/api/delete-workspace/${workspaceId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -59,26 +57,25 @@ export const deleteWorkspace = (workspaceId: string) => {
 
 /* Page Api */
 
-export const getPage = (pageId: string) => {
-    axios.get(`http://localhost:3000/page/${pageId}`)
-        .then(res => {
-            console.log(res);
-            return res.data;
-        })
-        .catch(e => {
-            console.log(e);
-        })
+export const getPage = async (pageId: string) => {
+    try {
+        const res = await axios.get(`http://localhost:3000/page/${pageId}`)
+        console.log(res);
+        return res.data;
+    } catch (e) {
+        console.log(e);
+    }
 }
 
-export const getPages = () => {
-    axios.get('http://localhost:3000/pages')
-        .then(res => {
-            console.log(res);
-            return res.data;
-        })
-        .catch(e => {
-            console.log(e);
-        })
+export const getPages = async () => {
+    try {
+        const res = await axios.get('http://localhost:3000/pages')
+        console.log(res);
+        return res.data;
+    } catch (e) {
+        console.log(e);
+    }
+
 }
 
 export const addPage = (workspaceId: string) => {

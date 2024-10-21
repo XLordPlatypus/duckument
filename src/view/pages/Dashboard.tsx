@@ -1,24 +1,13 @@
-import {getWorkspaces} from "../api/Api"
+import DashboardButtons from "../buttons/DashboardButtons";
 
 function Dashboard() {
-    getWorkspaces();
     return (
         <>
             <main>
-
+                <DashboardButtons />
             </main>
         </>
     )
 }
 
-/*
-// TODO: Put this in a general file
-const createButton = (id: string, name: string) => {
-    return (
-        <button id={id}>
-            {name}
-        </button>
-    )
-}
-*/
 export default Dashboard;

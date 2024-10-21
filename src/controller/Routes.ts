@@ -6,7 +6,7 @@ const router = express.Router()
 
 /* --- Workspace --- */
 
-router.get('/workspace/:workspaceId', async (req, res) => {
+router.get('/api/workspace/:workspaceId', async (req, res) => {
     try {
         res.json(await Workspace.findById(req.params.workspaceId))
     } catch (e) {
@@ -14,7 +14,7 @@ router.get('/workspace/:workspaceId', async (req, res) => {
     }
 })
 
-router.get('/workspaces', async (_req, res) => {
+router.get('/api/workspaces', async (_req, res) => {
     try {
         res.json(await Workspace.find())
     } catch (e) {
@@ -56,7 +56,7 @@ router.delete('/api/delete-workspace/:workspaceId', async (req, res) => {
 
 /* --- Page --- */
 
-router.get('/page/:pageId', async (req, res) => {
+router.get('/api/page/:pageId', async (req, res) => {
     try {
         res.json(await Page.findById(req.params.pageId));
     } catch (e) {
@@ -64,7 +64,7 @@ router.get('/page/:pageId', async (req, res) => {
     }
 })
 
-router.get('/pages', async (_req, res) => {
+router.get('/api/pages', async (_req, res) => {
     try {
         res.json(await Page.find())
     } catch (e) {

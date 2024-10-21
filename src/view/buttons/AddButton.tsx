@@ -1,4 +1,4 @@
-import {addWorkspace} from "../api/Api";
+import {addPage, addWorkspace} from "../api/Api";
 
 
 function AddButton() {
@@ -15,6 +15,7 @@ function AddButton() {
     )
 }
 
+// TODO: Get this in another class
 const getInput = () => {
     const input = prompt("Enter Workspace name:")
     if (input) {
@@ -26,7 +27,11 @@ const getInput = () => {
 
 const addNewElement = async () => {
     const input: string = getInput()
-    addWorkspace(input)
+    if (window.location.href.match('.*workspace.*')) {
+        addPage(input)
+    } else {
+        addWorkspace(input)
+    }
 }
 
 export default AddButton;
