@@ -67,9 +67,9 @@ export const getPage = async (pageId: string) => {
     }
 }
 
-export const getPages = async () => {
+export const getPages = async (workspaceId: string) => {
     try {
-        const res = await axios.get('http://localhost:3000/pages')
+        const res = await axios.get(`http://localhost:3000/pages/${workspaceId}`)
         console.log(res);
         return res.data;
     } catch (e) {

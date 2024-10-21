@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { getWorkspaces } from '../api/Api';
+import {useEffect, useState} from "react";
+import {getPages} from "../api/Api";
 
-function DashboardButtons() {
+function WorkspaceButtons() {
     const [buttonData, setButtonData] = useState<[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getWorkspaces();
+            const data = await getPages();
             setButtonData(data);
         };
 
@@ -23,14 +23,10 @@ function DashboardButtons() {
 const createButton = (data: string): JSX.Element => {
     const parsedData = JSON.parse(JSON.stringify(data));
     return (
-        <button key={parsedData._id} id={parsedData._id} onClick={selectWorkspace}>
+        <button key={parsedData._id} id={parsedData._id}>
             {parsedData.name}
         </button>
     );
 }
 
-const selectWorkspace = () => {
-
-}
-
-export default DashboardButtons;
+export default WorkspaceButtons;
