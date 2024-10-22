@@ -68,8 +68,12 @@ router.get('/api/pages/:workspaceId', async (req, res) => {
     try {
         const workspace = await Workspace.findById(req.params.workspaceId)
         const pages = []
-        for (let pageId in workspace.pageIds) {
-            pages.push(await Page.findById(pageId))
+        if (!workspace) {
+            res.json({message: 'No Pages found'})
+        } else {
+            for (const pageId in workspace.pageIds) {
+                pages.push(await Page.findById(pageId))
+            }
         }
         res.json(pages)
     } catch (e) {

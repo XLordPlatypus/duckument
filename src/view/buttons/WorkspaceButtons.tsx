@@ -1,13 +1,18 @@
 import {useEffect, useState} from "react";
 import {getPages} from "../api/Api";
+import {selectedWorkspaceId} from "./DashboardButtons";
 
 function WorkspaceButtons() {
     const [buttonData, setButtonData] = useState<[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getPages();
-            setButtonData(data);
+            const data = await getPages(selectedWorkspaceId);
+            if (!data) {
+                return;
+            } else {
+                setButtonData(data);
+            }
         };
 
         fetchData();
