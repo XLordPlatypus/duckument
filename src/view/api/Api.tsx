@@ -78,8 +78,8 @@ export const getPages = async (workspaceId: string) => {
 
 }
 
-export const addPage = (workspaceId: string) => {
-    axios.post(`http://localhost:3000/api/add-page/${workspaceId}`)
+export const addPage = (workspaceId: string, name: string) => {
+    axios.post(`http://localhost:3000/api/add-page/${workspaceId}`, {name: name})
         .then(res => {
             console.log(res)
             return res.data;

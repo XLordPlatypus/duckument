@@ -1,4 +1,5 @@
 import {addPage, addWorkspace} from "../api/Api";
+import {selectedWorkspaceId} from "./DashboardButtons";
 
 
 function AddButton() {
@@ -17,7 +18,7 @@ function AddButton() {
 
 // TODO: Get this in another class
 const getInput = () => {
-    const input = prompt("Enter Workspace name:")
+    const input = prompt("Enter name:")
     if (input) {
         return input;
     } else {
@@ -28,7 +29,8 @@ const getInput = () => {
 const addNewElement = async () => {
     const input: string = getInput()
     if (window.location.href.match('.*workspace.*')) {
-        addPage(input)
+        alert(selectedWorkspaceId)
+        addPage(selectedWorkspaceId, input)
     } else {
         addWorkspace(input)
     }
