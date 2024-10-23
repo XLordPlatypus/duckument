@@ -10,8 +10,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<Dashboard/>}/>
-                    <Route path="workspace" element={<Workspace/>}/>
-                    <Route path="page" element={<Page/>}/>
+                    <Route path="workspaces/:workspaceId" element={<Workspace/>}/>
+                    <Route path="pages/:pageId" element={<Page/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

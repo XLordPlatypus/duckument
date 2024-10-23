@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { getWorkspaces } from '../api/Api';
 import {useNavigate} from "react-router-dom";
 
-export let selectedWorkspaceId: string
-
 function DashboardButtons() {
     const [buttonData, setButtonData] = useState<[]>([]);
 
@@ -17,8 +15,8 @@ function DashboardButtons() {
     }, []);
 
     const navigate = useNavigate();
-    const routeChange = () =>{
-        const path = `/workspace`;
+    const routeChange = (workspaceId: string) =>{
+        const path = `/workspaces/${workspaceId}`;
         navigate(path);
     }
 
@@ -26,8 +24,7 @@ function DashboardButtons() {
         const parsedData = JSON.parse(JSON.stringify(data));
         return (
             <button key={parsedData._id} id={parsedData._id} onClick={() => {
-                selectedWorkspaceId = parsedData._id
-                routeChange()
+                routeChange(parsedData._id);
             }}>
                 {parsedData.name}
             </button>

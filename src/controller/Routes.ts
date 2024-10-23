@@ -6,7 +6,7 @@ const router = express.Router()
 
 /* --- Workspace --- */
 
-router.get('/api/workspace/:workspaceId', async (req, res) => {
+router.get('/api/workspaces/:workspaceId', async (req, res) => {
     try {
         res.json(await Workspace.findById(req.params.workspaceId))
     } catch (e) {
@@ -22,17 +22,17 @@ router.get('/api/workspaces', async (_req, res) => {
     }
 })
 
-router.post('/api/add-workspace', async (req, res) => {
+router.post('/api/workspaces', async (req, res) => {
     try {
         const newWorkspace = await Workspace.create({name: req.body.name})
         newWorkspace.save()
-        res.json(newWorkspace)
+        res.json("Workspace created successfully.")
     } catch (e) {
         console.log(e)
     }
 })
 
-router.put('/api/update-workspace/:workspaceId', async (req, res) => {
+router.put('/api/workspaces/:workspaceId', async (req, res) => {
     try {
         await Workspace.updateOne({_id: req.params.workspaceId}, {
             $set: {
@@ -45,7 +45,7 @@ router.put('/api/update-workspace/:workspaceId', async (req, res) => {
     }
 })
 
-router.delete('/api/delete-workspace/:workspaceId', async (req, res) => {
+router.delete('/api/workspaces/:workspaceId', async (req, res) => {
     try {
         await Workspace.deleteOne({_id: req.params.workspaceId})
         res.json({message: 'Workspace deleted successfully'})
@@ -56,7 +56,7 @@ router.delete('/api/delete-workspace/:workspaceId', async (req, res) => {
 
 /* --- Page --- */
 
-router.get('/api/page/:pageId', async (req, res) => {
+router.get('/api/pages/:pageId', async (req, res) => {
     try {
         res.json(await Page.findById(req.params.pageId));
     } catch (e) {
@@ -64,35 +64,49 @@ router.get('/api/page/:pageId', async (req, res) => {
     }
 })
 
-router.get('/api/pages/:workspaceId', async (req, res) => {
+router.get('/api/pages', async (req, res) => {
     try {
-        const workspace = await Workspace.findById(req.params.workspaceId)
-        const pages = []
-        if (!workspace) {
-            res.json({message: 'No Pages found'})
+        const workspaceId = req.query.workspaceId
+        if (!workspaceId) {
+            res.json(await Page.find())
         } else {
-            for (const pageId in workspace.pageIds) {
-                pages.push(await Page.findById(pageId))
+            const filteredPages = []
+            const pages = await Page.find()
+            const workspace = await Workspace.findById(workspaceId)
+            for (const page of pages) {
+                for (const pageId of workspace.pageIds) {
+                    if (page._id.toString() === pageId.toString()) {
+                        filteredPages.push(page)
+                    }
+                }
             }
+            res.json(filteredPages)
         }
-        res.json(pages)
+
     } catch (e) {
         console.log(e);
     }
 })
 
-router.post('/api/add-page/:workspaceId', async (req, res) => {
+router.post('/api/pages', async (req, res) => {
     try {
-        const newPage = await Page.create({name: req.body.name})
-        newPage.save()
-        await Workspace.updateOne({_id: req.params.workspaceId}, {$push: {pageIds: newPage._id}})
-        res.json(newPage)
+        const workspaceId = req.query.workspaceId
+        if (!workspaceId) {
+            const newPage = await Page.create({name: req.body.name})
+            newPage.save()
+            res.json("Page created successfully without update")
+        } else {
+            const newPage = await Page.create({name: req.body.name})
+            newPage.save()
+            await Workspace.updateOne({_id: workspaceId}, {$push: {pageIds: newPage._id}})
+            res.json("Page created successfully with update")
+        }
     } catch (e) {
         console.log(e)
     }
 })
 
-router.put('/api/update-page/:pageId', async (req, res) => {
+router.put('/api/pages/:pageId', async (req, res) => {
     try {
         await Page.updateOne({_id: req.params.pageId}, {$set: {name: req.body.name, content: req.body.content}})
         res.json({message: 'Workspace updated successfully'})
@@ -101,7 +115,7 @@ router.put('/api/update-page/:pageId', async (req, res) => {
     }
 })
 
-router.delete('/api/delete-page/:pageId', async (req, res) => {
+router.delete('/api/pages/:pageId', async (req, res) => {
     try {
         await Workspace.deleteOne({_id: req.params.pageId})
         res.json({message: 'Workspace deleted successfully'})

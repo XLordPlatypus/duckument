@@ -1,8 +1,20 @@
 import {addPage, addWorkspace} from "../api/Api";
-import {selectedWorkspaceId} from "./DashboardButtons";
+import {getInput} from "../util/Utility";
+import {useParams} from "react-router-dom";
 
 
 function AddButton() {
+    const { workspaceId } = useParams()
+
+    const addNewElement = async () => {
+        const input: string = getInput()
+        if (window.location.href.match('.*workspaces.*')) {
+            addPage(input, workspaceId);
+        } else {
+            addWorkspace(input)
+        }
+    }
+
     return (
         <>
             <button className="nav-button" id="addButton" onClick={addNewElement}>
@@ -14,26 +26,6 @@ function AddButton() {
             </button>
         </>
     )
-}
-
-// TODO: Get this in another class
-const getInput = () => {
-    const input = prompt("Enter name:")
-    if (input) {
-        return input;
-    } else {
-        return "NewElement";
-    }
-}
-
-const addNewElement = async () => {
-    const input: string = getInput()
-    if (window.location.href.match('.*workspace.*')) {
-        alert(selectedWorkspaceId)
-        addPage(selectedWorkspaceId, input)
-    } else {
-        addWorkspace(input)
-    }
 }
 
 export default AddButton;

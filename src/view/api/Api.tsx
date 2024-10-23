@@ -1,10 +1,10 @@
 import axios from "axios";
 
-/* Workspace Api */
+/* Workspace */
 
 export const getWorkspace = async (workspaceId: string) => {
     try {
-        const res = await axios.get(`http://localhost:3000/api/workspace/${workspaceId}`)
+        const res = await axios.get(`http://localhost:3000/api/workspaces/${workspaceId}`)
         console.log(res);
         return res.data;
     } catch (e) {
@@ -23,7 +23,7 @@ export const getWorkspaces = async () => {
 }
 
 export const addWorkspace = (name: string) => {
-    axios.post('http://localhost:3000/api/add-workspace', {name: name})
+    axios.post(`http://localhost:3000/api/workspaces`, {name: name})
         .then(res => {
             console.log(res)
             return res.data;
@@ -34,7 +34,7 @@ export const addWorkspace = (name: string) => {
 }
 
 export const updateWorkspace = (workspaceId: string) => {
-    axios.put(`http://localhost:3000/api/update-workspace/${workspaceId}`)
+    axios.put(`http://localhost:3000/api/workspaces/${workspaceId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -45,7 +45,7 @@ export const updateWorkspace = (workspaceId: string) => {
 }
 
 export const deleteWorkspace = (workspaceId: string) => {
-    axios.delete(`http://localhost:3000/api/delete-workspace/${workspaceId}`)
+    axios.delete(`http://localhost:3000/api/workspaces/${workspaceId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -55,11 +55,11 @@ export const deleteWorkspace = (workspaceId: string) => {
         })
 }
 
-/* Page Api */
+/* Page */
 
 export const getPage = async (pageId: string) => {
     try {
-        const res = await axios.get(`http://localhost:3000/page/${pageId}`)
+        const res = await axios.get(`http://localhost:3000/api/pages/${pageId}`)
         console.log(res);
         return res.data;
     } catch (e) {
@@ -67,19 +67,33 @@ export const getPage = async (pageId: string) => {
     }
 }
 
-export const getPages = async (workspaceId: string) => {
+export const getPages = async (workspaceId: string | null =  null) => {
     try {
-        const res = await axios.get(`http://localhost:3000/pages/${workspaceId}`)
-        console.log(res);
-        return res.data;
+        if (!workspaceId) {
+            const res = await axios.get(`http://localhost:3000/api/pages`)
+            console.log(res);
+            return res.data;
+        } else {
+            const res = await axios.get(`http://localhost:3000/api/pages`, {
+                params:{
+                    workspaceId: workspaceId,
+                }
+            })
+            console.log(res);
+            return res.data;
+        }
     } catch (e) {
         console.log(e);
     }
 
 }
 
-export const addPage = (workspaceId: string, name: string) => {
-    axios.post(`http://localhost:3000/api/add-page/${workspaceId}`, {name: name})
+export const addPage = (name: string, workspaceId: string | null = null) => {
+    axios.post(`http://localhost:3000/api/pages`, {name: name}, {
+        params: {
+            workspaceId: workspaceId,
+        }
+    })
         .then(res => {
             console.log(res)
             return res.data;
@@ -90,7 +104,7 @@ export const addPage = (workspaceId: string, name: string) => {
 }
 
 export const updatePage = (pageId: string) => {
-    axios.put(`http://localhost:3000/api/update-page/${pageId}`)
+    axios.put(`http://localhost:3000/api/pages/${pageId}`)
         .then(res => {
             console.log(res)
             return res.data;
@@ -101,7 +115,7 @@ export const updatePage = (pageId: string) => {
 }
 
 export const deletePage = (pageId: string) => {
-    axios.delete(`http://localhost:3000/api/delete-page/${pageId}`)
+    axios.delete(`http://localhost:3000/api/pages/${pageId}`)
         .then(res => {
             console.log(res)
             return res.data;
