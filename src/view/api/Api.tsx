@@ -103,15 +103,26 @@ export const addPage = (name: string, workspaceId: string | null = null) => {
         })
 }
 
-export const updatePage = (pageId: string) => {
-    axios.put(`http://localhost:3000/api/pages/${pageId}`)
-        .then(res => {
-            console.log(res)
-            return res.data;
-        })
-        .catch(e => {
-            console.log(e);
-        })
+export const updatePage = (name: string | null = null, content: string, pageId: string) => {
+    if (name) {
+        axios.put(`http://localhost:3000/api/pages/${pageId}`, {name: name, content: content})
+            .then(res => {
+                console.log(res)
+                return res.data;
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    } else {
+        axios.put(`http://localhost:3000/api/pages/${pageId}`, {content: content})
+            .then(res => {
+                console.log(res)
+                return res.data;
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
 }
 
 export const deletePage = (pageId: string) => {

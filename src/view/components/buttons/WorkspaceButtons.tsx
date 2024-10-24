@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getPages} from "../api/Api";
+import {getPages} from "../../api/Api";
 import {useNavigate, useParams} from "react-router-dom";
 
 function WorkspaceButtons() {

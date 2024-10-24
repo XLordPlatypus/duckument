@@ -1,5 +1,5 @@
-import AddButton from "../buttons/AddButton";
-import DuckButton from "../buttons/DuckButton";
+import AddButton from "../components/buttons/AddButton";
+import DuckButton from "../components/buttons/DuckButton";
 import {Outlet} from "react-router-dom";
 
 function Layout() {

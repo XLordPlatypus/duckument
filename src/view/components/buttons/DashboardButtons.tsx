@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getWorkspaces } from '../api/Api';
+import { getWorkspaces } from '../../api/Api';
 import {useNavigate} from "react-router-dom";
 
 function DashboardButtons() {
@@ -7,8 +7,7 @@ function DashboardButtons() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getWorkspaces();
-            setButtonData(data);
+            setButtonData(await getWorkspaces());
         };
 
         fetchData();

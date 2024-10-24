@@ -1,5 +1,5 @@
-import {addPage, addWorkspace} from "../api/Api";
-import {getInput} from "../util/Utility";
+import {addPage, addWorkspace} from "../../api/Api";
+import {getInput} from "../../util/Utility";
 import {useParams} from "react-router-dom";
 
 

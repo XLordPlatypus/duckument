@@ -1,4 +1,4 @@
-import DashboardButtons from "../buttons/DashboardButtons";
+import DashboardButtons from "../components/buttons/DashboardButtons";
 
 function Dashboard() {
     return (

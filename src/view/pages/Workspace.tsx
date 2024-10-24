@@ -1,4 +1,4 @@
-import WorkspaceButtons from "../buttons/WorkspaceButtons";
+import WorkspaceButtons from "../components/buttons/WorkspaceButtons";
 
 function Workspace() {
     return (
