@@ -46,7 +46,9 @@ function Page() {
             <>
                 <textarea spellCheck={false} className="text-field" value={text} onChange={(e) => {
                     setText(e.target.value)
-                    updatePage(null, e.target.value, pageId);
+                    if (pageId) {
+                        updatePage(null, e.target.value, pageId);
+                    }
                 }}></textarea>
             </>
         )

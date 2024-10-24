@@ -73,10 +73,12 @@ router.get('/api/pages', async (req, res) => {
             const filteredPages = []
             const pages = await Page.find()
             const workspace = await Workspace.findById(workspaceId)
-            for (const page of pages) {
-                for (const pageId of workspace.pageIds) {
-                    if (page._id.toString() === pageId.toString()) {
-                        filteredPages.push(page)
+            if (workspace) {
+                for (const page of pages) {
+                    for (const pageId of workspace.pageIds) {
+                        if (page._id.toString() === pageId.toString()) {
+                            filteredPages.push(page)
+                        }
                     }
                 }
             }
