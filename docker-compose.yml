@@ -1,0 +1,22 @@
+services:
+  duckument-db:
+    container_name: duckument-db
+    image: mongo:8.0
+    volumes:
+      - data:/data/db
+    ports:
+      - '27017:27017'
+
+  duckument:
+    container_name: duckument
+    build: .
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      - duckument-db
+    environment:
+      MONGO_URI: mongodb://localhost:27017/duckument-db
+
+volumes:
+  data:
