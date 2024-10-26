@@ -1,3 +1,7 @@
+networks:
+  nginx_default:
+    external: true
+
 services:
   duckument-db:
     container_name: duckument-db
@@ -6,17 +10,19 @@ services:
       - data:/data/db
     ports:
       - '27017:27017'
+    networks:
+      - nginx_default
 
   duckument:
     container_name: duckument
     build: .
-    command: npm run dev
     ports:
-      - "5173:5173"
+      - '3000:3000'
+      - '5173:5173'
     depends_on:
       - duckument-db
-    environment:
-      MONGO_URI: mongodb://localhost:27017/duckument-db
+    networks:
+      - nginx_default
 
 volumes:
   data:

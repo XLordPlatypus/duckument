@@ -8,8 +8,6 @@ RUN npm install
 
 Copy . .
 
-RUN npx tsc --build
-
-Expose 5173
+Expose 5173 3000
 
 CMD ["npm", "run", "dev"]

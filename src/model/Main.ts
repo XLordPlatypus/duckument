@@ -13,7 +13,7 @@ app.use(cors({ origin: 'http://localhost:5173', methods: ['GET', 'POST', 'PUT', 
 app.use('/', router);
 
 app.listen(port, async () => {
-    await mongoose.connect('mongodb://localhost:27017/duckument-db')
+    await mongoose.connect('mongodb://duckument-db:27017/duckument-db')
         .then(() => { console.log("Connected to DB") })
         .catch(() => { console.log("Connection failed") })
     console.log(`Server started on port ${port} :)`);

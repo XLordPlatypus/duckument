@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "node build/model/Main.js",
+    "start": "node build/src/model/Main.js",
     "client": "vite",
-    "server": "node build/model/Main.js",
+    "server": "node build/src/model/Main.js",
     "dev": "concurrently \"npm run server \" \"npm run client\" ",
     "lint": "eslint ."
   },
