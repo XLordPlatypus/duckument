@@ -1,11 +1,16 @@
-import Markdown from "react-markdown";
-import {useEffect, useState} from "react";
-import {getPage, updatePage} from "../api/Api";
+import {useEffect} from "react";
+import {getPage} from "../api/Api";
 import {useParams} from "react-router-dom";
+import EditButton from "../components/buttons/EditButton";
+import IsReading from "../components/hooks/IsReading";
+import MarkdownText from "../components/hooks/MarkdownText";
+import Edit from "../components/markdown/Edit";
+import Read from "../components/markdown/Read";
 
 function Page() {
     const { pageId } = useParams()
-    const [text, setText] = useState("");
+    const {setText} = MarkdownText();
+    const {isReading} = IsReading()
 
     useEffect(() => {
         const getData = async () => {
@@ -21,37 +26,27 @@ function Page() {
     return (
         <>
             <main>
-                {MarkdownEdit()}
-                {MarkdownRendered()}
+                <EditButton/>
+                {Render()}
             </main>
         </>
     )
 
-
-    function MarkdownRendered() {
-
-        return (
-            <>
-                <div className={"text-field"}>
-                    <Markdown>
-                        {text}
-                    </Markdown>
-                </div>
-            </>
-        )
-    }
-
-    function MarkdownEdit() {
-        return (
-            <>
-                <textarea spellCheck={false} className="text-field" value={text} onChange={(e) => {
-                    setText(e.target.value)
-                    if (pageId) {
-                        updatePage(null, e.target.value, pageId);
-                    }
-                }}></textarea>
-            </>
-        )
+    function Render() {
+        if (isReading) {
+            return (
+                <>
+                    <Read/>
+                    <Edit/>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Read/>
+                </>
+            )
+        }
     }
 }
 
