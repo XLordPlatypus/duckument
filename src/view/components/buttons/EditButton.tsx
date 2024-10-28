@@ -1,8 +1,6 @@
-import IsReading from "../hooks/IsReading";
 
-function EditButton() {
 
-    const {isReading, setIsReading} = IsReading();
+function EditButton({isReading, setIsReading}) {
 
     if (isReading) {
         return (

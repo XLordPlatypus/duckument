@@ -1,8 +1,6 @@
 import Markdown from "react-markdown";
-import MarkdownText from "../hooks/MarkdownText";
 
-function Read() {
-    const {text} = MarkdownText();
+function Read({text}) {
     return (
         <>
             <div className={"text-field"}>

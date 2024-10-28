@@ -1,9 +1,7 @@
 import {updatePage} from "../../api/Api";
-import MarkdownText from "../hooks/MarkdownText";
 import {useParams} from "react-router-dom";
 
-function Edit() {
-    const {text, setText} = MarkdownText()
+function Edit({text, setText}) {
     const pageId = useParams()
     return (
         <>

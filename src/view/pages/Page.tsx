@@ -1,16 +1,14 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getPage} from "../api/Api";
 import {useParams} from "react-router-dom";
 import EditButton from "../components/buttons/EditButton";
-import IsReading from "../components/hooks/IsReading";
-import MarkdownText from "../components/hooks/MarkdownText";
 import Edit from "../components/markdown/Edit";
 import Read from "../components/markdown/Read";
 
 function Page() {
     const { pageId } = useParams()
-    const {setText} = MarkdownText();
-    const {isReading} = IsReading()
+    const [text, setText] = useState("");
+    const [isReading, setIsReading] = useState(false);
 
     useEffect(() => {
         const getData = async () => {
@@ -26,7 +24,7 @@ function Page() {
     return (
         <>
             <main>
-                <EditButton/>
+                <EditButton isReading={isReading} setIsReading={setIsReading} />
                 {Render()}
             </main>
         </>
@@ -36,14 +34,14 @@ function Page() {
         if (isReading) {
             return (
                 <>
-                    <Read/>
-                    <Edit/>
+                    <Edit text={text} setText={setText}/>
+                    <Read text={text}></Read>
                 </>
             )
         } else {
             return (
                 <>
-                    <Read/>
+                    <Read text={text}/>
                 </>
             )
         }
