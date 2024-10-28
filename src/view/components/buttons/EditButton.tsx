@@ -1,7 +1,4 @@
-
-
 function EditButton({isReading, setIsReading}) {
-
     if (isReading) {
         return (
             <>

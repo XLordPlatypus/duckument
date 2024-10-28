@@ -27,13 +27,6 @@ body, html {
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
-    min-width: 100%;
-}
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
 }
 
 button {
@@ -72,25 +65,6 @@ button:focus-visible {
     }
 }
 
-.upper-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.text-field {
-    margin: 4em;
-    font-family: Montserrat, sans-serif;
-    border-radius: 15px;
-    font-size: small;
-    color: white;
-    background-color: #1a1a1a;
-    border: none;
-    resize: none;
-    width: 80%;
-    height: 80vh;
-    padding: 20px;
-}
-
 main {
     width: 75%;
     height: 100vh;
@@ -114,4 +88,39 @@ footer {
     bottom: 0;
     right: 0;
     left: 0;
+}
+
+.nav-button {
+    margin: 1em;
+    width: 10em;
+    height: 4em;
+}
+
+.main-button {
+    height: 100%;
+    width: 1rem;
+}
+
+.nav-button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.upper-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.text-field {
+    margin: 4em;
+    font-family: Montserrat, sans-serif;
+    border-radius: 15px;
+    font-size: small;
+    color: white;
+    background-color: #1a1a1a;
+    border: none;
+    resize: none;
+    width: 80%;
+    height: 80vh;
+    padding: 20px;
 }

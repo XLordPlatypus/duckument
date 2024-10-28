@@ -7,11 +7,9 @@ function Layout() {
         <>
             <div className="upper-container">
                 <nav>
-                    <section>
-                        <div className="nav-button-container">
-                            <DuckButton/>
-                            <AddButton/>
-                        </div>
+                    <section className="nav-button-container">
+                        <DuckButton/>
+                        <AddButton/>
                     </section>
                 </nav>
 

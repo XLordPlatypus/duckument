@@ -23,8 +23,8 @@ function Page() {
 
     return (
         <>
+            <EditButton isReading={isReading} setIsReading={setIsReading} />
             <main>
-                <EditButton isReading={isReading} setIsReading={setIsReading} />
                 {Render()}
             </main>
         </>
