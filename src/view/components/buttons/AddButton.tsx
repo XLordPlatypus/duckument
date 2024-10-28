@@ -7,11 +7,10 @@ function AddButton() {
     const { workspaceId } = useParams()
 
     const addNewElement = async () => {
-        const input: string = getInput()
         if (window.location.href.match('.*workspaces.*')) {
-            addPage(input, workspaceId);
-        } else {
-            addWorkspace(input)
+            addPage(getInput(), workspaceId);
+        } else if (!window.location.href.match('.*pages.*')) {
+            addWorkspace(getInput())
         }
     }
 
