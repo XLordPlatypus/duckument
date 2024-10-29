@@ -2,16 +2,22 @@ import {addPage, addWorkspace} from "../../api/Api";
 import {getInput} from "../../util/Utility";
 import {useParams} from "react-router-dom";
 
-
 function AddButton() {
     const { workspaceId } = useParams()
 
     const addNewElement = async () => {
         if (window.location.href.match('.*workspaces.*')) {
-            addPage(getInput(), workspaceId);
+            const name = getInput("Enter page name: ")
+            if (name) {
+                addPage(name, workspaceId);
+            }
         } else if (!window.location.href.match('.*pages.*')) {
-            addWorkspace(getInput())
+            const name = getInput("Enter workspace name: ")
+            if (name){
+                addWorkspace(name)
+            }
         }
+        window.location.reload()
     }
 
     return (

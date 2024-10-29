@@ -16,12 +16,14 @@
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "github-markdown-css": "^5.7.0",
     "mongoose": "^8.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.27.0",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

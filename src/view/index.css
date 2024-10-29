@@ -82,8 +82,10 @@ nav {
 }
 
 footer {
-    text-align: center;
+    font-size: medium;
+    text-align: left;
     margin-bottom: 1em;
+    margin-left: 1em;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -92,13 +94,19 @@ footer {
 
 .nav-button {
     margin: 1em;
-    width: 10em;
-    height: 4em;
+    width: 5em;
+    height: 5em;
 }
 
 .main-button {
     height: 100%;
     width: 1rem;
+}
+
+.delete-button-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 .nav-button-container {
@@ -121,6 +129,6 @@ footer {
     border: none;
     resize: none;
     width: 80%;
-    height: 80vh;
+    height: 100%;
     padding: 20px;
 }

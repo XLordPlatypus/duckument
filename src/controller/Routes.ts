@@ -119,8 +119,7 @@ router.put('/api/pages/:pageId', async (req, res) => {
 
 router.delete('/api/pages/:pageId', async (req, res) => {
     try {
-        await Workspace.deleteOne({_id: req.params.pageId})
-        res.json({message: 'Workspace deleted successfully'})
+        res.json(await Page.deleteOne({_id: req.params.pageId}))
     } catch (e) {
         console.log(e)
     }

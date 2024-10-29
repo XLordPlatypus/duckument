@@ -7,11 +7,11 @@ export const createButton = (data: string): JSX.Element => {
     );
 }
 
-export const getInput = () => {
-    const input = prompt("Enter name:")
+export const getInput = (message: string) => {
+    const input = prompt(message)
     if (input) {
         return input;
     } else {
-        return "NewElement";
+        return "";
     }
 }
