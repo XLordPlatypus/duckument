@@ -1,18 +1,27 @@
-# Duckument v0.11.0
+# Duckument v0.12.0
 
-A document software based on Markdown.
+A simple document software with markdown. Powered with Node + Express, Reactjs + Vite and  a MongoDB
 
-## Start
+Basically create workspaces (folders) and in these you can create pages.
+
+It can do some basic CRUD operations but is not complete.
+I may work on it in the future.
+
+## Setup with docker
 
 Build application:
 ```bash
 npx tsc --build
 ```
 
-Run application
+Run application the first time
 ```bash
-npm run dev
+docker compose up --build
 ```
 
-## Docker
+Without building
+```bash
+docker compose up -d
+```
+
 
